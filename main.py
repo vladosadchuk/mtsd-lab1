@@ -3,6 +3,14 @@ import os
 import sys
 
 
+def get_float_input(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError as e:
+            print(f"Error. Expected a valid real number, got {e.args[0].split(':')[-1].strip()} instead")
+
+
 def solve_quadratic(a, b, c):
     discriminant = b ** 2 - 4 * a * c
     if discriminant > 0:
@@ -17,9 +25,12 @@ def solve_quadratic(a, b, c):
 
 
 def interactive_mode():
-    a = float(input("a = "))
-    b = float(input("b = "))
-    c = float(input("c = "))
+    a = get_float_input("a = ")
+    while a == 0:
+        print("Error. a cannot be 0")
+        a = get_float_input("a = ")
+    b = get_float_input("b = ")
+    c = get_float_input("c = ")
 
     print(f"Equation is: ({a}) x^2 + ({b}) x + ({c}) = 0")
     roots = solve_quadratic(a, b, c)
