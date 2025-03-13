@@ -68,4 +68,3 @@ if __name__ == "__main__":
     else:
         print("Usage: python equation.py [file]")
         sys.exit(1)
-    print("Hello world")
